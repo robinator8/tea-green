@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -9,15 +8,14 @@ import { rhythm } from "../utils/typography"
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
+    const { title, text_color, background_color }= data.site.siteMetadata
     const posts = data.allMarkdownRemark.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout location={this.props.location} title={title} text_color={text_color} background_color={background_color}>
         <SEO title="All posts" />
-        <Bio />
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
+          const title = node.frontmatter.date || node.fields.slug
           return (
             <article key={node.fields.slug}>
               <header>
@@ -30,14 +28,11 @@ class BlogIndex extends React.Component {
                     {title}
                   </Link>
                 </h3>
-                <small>{node.frontmatter.date}</small>
               </header>
               <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
+                <audio controls={true} preload="none">
+                  <source src={node.frontmatter.mp3.publicURL} type="audio/mpeg" />
+                </audio>
               </section>
             </article>
           )
@@ -54,6 +49,8 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        background_color
+        text_color
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -65,8 +62,13 @@ export const pageQuery = graphql`
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
-            title
-            description
+            mp3 {
+              publicURL
+            }
+            mid {
+              publicURL
+            }
+            author
           }
         }
       }

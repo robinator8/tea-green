@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
@@ -11,12 +10,11 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          title={"Daily music from " + post.frontmatter.date}
+          description={"Tea Green daily improvisational music: " + post.frontmatter.date}
         />
         <article>
           <header>
@@ -26,7 +24,7 @@ class BlogPostTemplate extends React.Component {
                 marginBottom: 0,
               }}
             >
-              {post.frontmatter.title}
+              {post.frontmatter.date}
             </h1>
             <p
               style={{
@@ -35,9 +33,17 @@ class BlogPostTemplate extends React.Component {
                 marginBottom: rhythm(1),
               }}
             >
-              {post.frontmatter.date}
             </p>
           </header>
+          <audio controls= { true }>
+            <source src={ post.frontmatter.mp3.publicURL } type="audio/mpeg" />
+            Your browser does not support this audio element.
+          </audio>
+          
+          {
+            post.frontmatter.mid != null &&
+            <a href={ post.frontmatter.mid.publicURL }>mid</a>
+          }
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr
             style={{
@@ -45,7 +51,7 @@ class BlogPostTemplate extends React.Component {
             }}
           />
           <footer>
-            <Bio />
+
           </footer>
         </article>
 
@@ -62,14 +68,14 @@ class BlogPostTemplate extends React.Component {
             <li>
               {previous && (
                 <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
+                  ← {previous.frontmatter.date}
                 </Link>
               )}
             </li>
             <li>
               {next && (
                 <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
+                  {next.frontmatter.date} →
                 </Link>
               )}
             </li>
@@ -95,9 +101,13 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
-        title
         date(formatString: "MMMM DD, YYYY")
-        description
+        mp3 {
+          publicURL
+        }
+        mid {
+          publicURL
+        }
       }
     }
   }

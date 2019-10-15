@@ -1,12 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    title: `Tea Green`,
+    author: `Robert Craig`,
+    description: `My space for posting musical ideas.`,
+    siteUrl: `https://teagreen.ca/`,
+    background_color: '#d7f1c1',
+    text_color: '#20225b',
+    //social: {
+    //  twitter: `kylemathews`,
+    //},
   },
   plugins: [
     {
@@ -27,6 +29,16 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: 'gatsby-remark-audio',
+            options: {
+              preload: 'auto',
+              loop: false,
+              controls: true,
+              muted: false,
+              autoplay: false
+            }
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
