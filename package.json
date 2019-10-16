@@ -10,6 +10,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.15.36",
+    "gatsby-background-image": "^0.8.15",
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-feed": "^2.3.16",
     "gatsby-plugin-google-analytics": "^2.1.21",
@@ -28,6 +29,7 @@
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-transformer-remark": "^2.6.28",
     "gatsby-transformer-sharp": "^2.2.21",
+    "grommet": "^2.7.9",
     "prismjs": "^1.17.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

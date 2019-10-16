@@ -1,11 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Tea Green`,
-    author: `Robert Craig`,
+    title: `tea green`,
+    author: `Robert  Craig`,
     description: `My space for posting musical ideas.`,
     siteUrl: `https://teagreen.ca/`,
-    background_color: '#d7f1c1',
-    text_color: '#20225b',
     //social: {
     //  twitter: `kylemathews`,
     //},
@@ -86,5 +84,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-styled-components` 
   ],
 }

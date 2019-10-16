@@ -1,4 +1,18 @@
 import Typography from "typography"
+const typography = new Typography({
+  baseFontSize: "18px",
+  baseLineHeight: 1.666,
+  headerFontFamily: [
+    'Helvetica', 
+    'cursive'
+  ],
+  bodyFontFamily: ["Georgia", "serif"],
+})
+export default typography
+export const rhythm = typography.rhythm
+export const scale = typography.scale
+
+/*mport Typography from "typography"
 import Wordpress2016 from "typography-theme-wordpress-2016"
 
 Wordpress2016.overrideThemeStyles = () => {
@@ -20,4 +34,4 @@ if (process.env.NODE_ENV !== `production`) {
 
 export default typography
 export const rhythm = typography.rhythm
-export const scale = typography.scale
+export const scale = typography.scale*/
