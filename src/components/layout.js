@@ -180,22 +180,26 @@
 
 import React from 'react'
 import { Box, Grommet, Button, Heading } from 'grommet'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { Link, graphql, StaticQuery, navigate } from 'gatsby'
 
 const theme = {
   global: {
     colors: {
       brand: '#191b52',
       'accent-1': '#d3f1c1',
-      text: '#191b52'
+      //text: { light: 'brand', dark: 'accent-1' }
+      focus: 'brand'
     },
     active: {
-      color: "brand"
+      //color: "brand"
     }
   },
   button: {
-    color: 'brand'
-  }
+    //color: { light: 'brand', dark: 'accent-1' },
+    active: {
+    //  color: 'accent-1'
+    }
+  },
 }
 
 const AppBar = props => (
@@ -231,8 +235,14 @@ const SubTitleHeading = props => (
   />
 )
 
+const NavButton = props => (
+  <Button 
+    margin={{ right: 'xsmall' }}
+    {...props}
+  />
+)
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -247,16 +257,22 @@ const Layout = ({ children }) => (
       <Grommet plain theme={theme}>
       <AppBar>
         <Box direction='row' align="center">
-          <Link to={'/'}>
-            <Box background='brand'>
-              <TitleHeading>{data.site.siteMetadata.title}</TitleHeading>
-            </Box>
-          </Link>
+            <Button plain onClick={()=>navigate('/')}>
+              <Box background='brand'>
+                <TitleHeading>{data.site.siteMetadata.title}</TitleHeading>
+              </Box>
+            </Button>
           <SubTitleHeading>musical improvisation</SubTitleHeading>
         </Box>
         <Box direction='row'>
-          <Link to={'/'}><Button label='home' /></Link>
-          <Link to={'/about'}><Button label='about' /></Link>
+          <Link to={'/'}>
+            {location.pathname == "/" && <NavButton label='home' primary />}
+            {location.pathname != "/" && <NavButton label='home' />}
+          </Link>
+          <Link to={'/about'}>
+            {location.pathname == "/about" && <NavButton label='about' primary />}
+            {location.pathname != "/about" && <NavButton label='about' />}
+          </Link>
         </Box>
       </AppBar>
       {children}

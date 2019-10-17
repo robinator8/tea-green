@@ -35,6 +35,9 @@ class MusicTable extends React.Component {
                 columns={columns}
                 data={data}
                 onClickRow={onClickRow}
+                background={{
+                    body: ["light-1", "white"],
+                  }}
                 />
             </Box>
         )
