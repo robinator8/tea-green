@@ -14,6 +14,9 @@ class BlogIndex extends React.Component {
       {
         property: 'date',
         primary: true,
+        render: datum => (
+          <Text margin={{ left: "small" }}>{datum.date}</Text>
+        )
       },
       {
         property: 'artist',

@@ -22,15 +22,6 @@ class MusicTable extends React.Component {
     render() {
         const { columns, data, onClickRow } = this.props
         return (
-            <Box align="center" pad="large">
-            {/* <DataTable
-                columns={columns.map(c => ({
-                ...c,
-                search: c.property === "name" || c.property === "location"
-                }))}
-                data={DATA}
-                resizeable
-            /> */}
             <DataTable
                 columns={columns}
                 data={data}
@@ -38,8 +29,9 @@ class MusicTable extends React.Component {
                 background={{
                     body: ["light-1", "white"],
                   }}
+                size="fill"
+                margins={0}
                 />
-            </Box>
         )
     }
 }

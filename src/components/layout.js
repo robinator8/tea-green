@@ -1,185 +1,6 @@
-//import React from "react"
-// import { Link, StaticQuery, graphql } from "gatsby"
-
-// import styled from "styled-components"
-// import { rhythm, scale } from "../utils/typography"
-// import BackgroundImage from 'gatsby-background-image'
-
-// const BackgroundSection = ({ className, children }) => (
-//   <StaticQuery
-//     query={graphql`
-//       query {
-//         desktop: file(name: { eq: "plant-background" }) {
-//           childImageSharp {
-//             fluid(quality: 90, maxWidth: 1920) {
-//               ...GatsbyImageSharpFluid_withWebp
-//             }
-//           }
-//         }
-//       }
-//     `}
-//     render={data => {
-//       // Set ImageData.
-//       const imageData = data.desktop.childImageSharp.fluid
-//       return (
-//         <BackgroundImage
-//           Tag="section"
-//           className={className}
-//           fluid={imageData}
-//           backgroundColor={`#040e18`}
-//           opacity
-//         >
-//           {children}
-//         </BackgroundImage>
-//       )
-//     }}
-//   />
-// )
-
-// const StyledBackgroundSection = styled(BackgroundSection)`
-//   width: 100%;
-//   background-position: bottom center;
-//   background-repeat: repeat-y;
-//   background-size: cover;
-// `
-
-// const Content = styled.div`
-//   position: absolute;
-//   top: 0;
-//   min-width: 100%;
-//   height: fill-content;
-//   background-color: #d8e4d0;
-//   color: #20225b;
-
-// `
-// // DBEBCD
-// // d8e4d0
-// // d8e4d0
-
-// const TitleHeader = styled.h1`
-//   background-color: #20225b;
-//   padding: 0px 12px;
-//   margin-top: 16px;
-//   margin-left: 16px;
-//   margin-right: 16px;
-//   color: #d8e4d0;
-//   display: inline-block;
-// `
-
-// const SloganHeader = styled.h1`
-//   display: inline-block;
-//   color: #20225b;
-// `
-// const AboutLink = styled.h1`
-//   float: right;
-//   display: inline-block;
-//   color: #20225b;
-//   margin-right: 16px;
-// `
-
-// const Container = styled.div`
-//   max-width: ${rhythm(24)};
-//   margin-left: auto;
-//   margin-right: auto;
-// `
-
-// class Layout extends React.Component {
-//   render() {
-//     const { location, title, children } = this.props
-//     return (
-
-//         <Content>
-//           <StyledBackgroundSection>
-//           <TitleHeader>{ title }</TitleHeader>
-//           <SloganHeader>musical improvisation</SloganHeader>
-//           <AboutLink>about</AboutLink>
-//             <Container>
-              
-//               <main>{ children }</main>
-//             </Container>
-//           </StyledBackgroundSection>
-//        </Content>
-
-//     )
-//   }
-// }
-
-// 
-// class Layout extends React.Component {
-//   render() {
-//     const { location, title, children } = this.props
-//     const rootPath = `${__PATH_PREFIX__}/`
-//     let header
-
-//     if (location.pathname === rootPath) {
-//       header = (
-//         <h1
-//           style={{
-//             ...scale(1.5),
-//             marginBottom: rhythm(1.5),
-//             marginTop: 0,
-//           }}
-//         >
-//           <Link
-//             style={{
-//               boxShadow: `none`,
-//               textDecoration: `none`,
-//               color: `inherit`,
-//             }}
-//             to={`/`}
-//           >
-//             {title}
-//           </Link>
-//         </h1>
-//       )
-//     } else {
-//       header = (
-//         <h3
-//           style={{
-//             fontFamily: `Montserrat, sans-serif`,
-//             marginTop: 0,
-//           }}
-//         >
-//           <Link
-//             style={{
-//               boxShadow: `none`,
-//               textDecoration: `none`,
-//               color: `inherit`,
-//             }}
-//             to={`/`}
-//           >
-//             {title}
-//           </Link>
-//         </h3>
-//       )
-//     }
-//     return (
-//       <Container>
-//         <div
-//         style={{
-//           marginLeft: `auto`,
-//           marginRight: `auto`,
-//           maxWidth: rhythm(24),
-//           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-//           backgroundColor: '#d7f1c1',
-//           color: '#20225b'
-//         }}
-//       >
-//         <header>{header}</header>
-//         <main>{children}</main>
-//         { /*<footer>
-//           © {new Date().getFullYear()}, Built with
-//           {` `}
-//           <a href="https://www.gatsbyjs.org">Gatsby</a>
-//         </footer> */ }
-//       </div>
-//       </Container> 
-//     )
-//   }
-// }
-
+//import React from "react";
+import { Grommet, Box, Grid, Heading, ResponsiveContext, Button } from "grommet";
 import React from 'react'
-import { Box, Grommet, Button, Heading } from 'grommet'
 import { Link, graphql, StaticQuery, navigate } from 'gatsby'
 
 const theme = {
@@ -187,20 +8,98 @@ const theme = {
     colors: {
       brand: '#191b52',
       'accent-1': '#d3f1c1',
-      //text: { light: 'brand', dark: 'accent-1' }
       focus: 'brand'
     },
-    active: {
-      //color: "brand"
-    }
-  },
-  button: {
-    //color: { light: 'brand', dark: 'accent-1' },
-    active: {
-    //  color: 'accent-1'
+    breakpoints: {
+      small: { value: 600 },
+      medium: { value: 900 },
+      large: 1300,
     }
   },
 }
+
+const columns = {
+  small: ["auto"],
+  medium: ["auto", "auto"],
+  large: ["auto", "auto", "auto"],
+  xlarge: ["auto", "auto", "auto"]
+};
+
+const rows = {
+  small: ["xsmall", "xsmall", "xsmall", "fill"],
+  medium: ["xsmall", "xsmall","fill"],
+  large: ["xsmall","fill"],
+  xlarge: ["xsmall","fill"]
+};
+
+const fixedGridAreas = {
+  small: [
+    { name: "title", start: [0, 0], end: [0, 0] },
+    { name: "subtitle", start: [0, 1], end: [0, 1] },
+    { name: "nav", start: [0, 2], end: [0, 2] },
+    { name: "main", start: [0,3], end: [0,3] }
+  ],
+  medium: [
+    { name: "title", start: [0, 0], end: [0, 0] },
+    { name: "subtitle", start: [1, 0], end: [1, 0] },
+    { name: "nav", start: [0, 1], end: [1, 1] },
+    { name: "main", start: [0,2], end: [1,2] }
+  ],
+  large: [
+    { name: "title", start: [0, 0], end: [0, 0] },
+    { name: "subtitle", start: [1, 0], end: [1, 0] },
+    { name: "nav", start: [2, 0], end: [2, 0] },
+    { name: "main", start: [0,1], end: [2,1] }
+  ],
+  xlarge: [
+    { name: "title", start: [0, 0], end: [0, 0] },
+    { name: "subtitle", start: [1, 0], end: [1, 0] },
+    { name: "nav", start: [2, 0], end: [2, 0] },
+    { name: "main", start: [0,1], end: [2,1] }
+
+  ]
+};
+
+const ResponsiveGrid = ({
+  children,
+  areas,
+  ...props
+}) => (
+  <ResponsiveContext.Consumer>
+    {size => {
+      // Take into consideration if not array is sent but a simple string
+      let columnsVal = columns;
+      if (columns) {
+        if (columns[size]) {
+          columnsVal = columns[size];
+        }
+      }
+
+      let rowsVal = rows;
+      if (rows) {
+        if (rows[size]) {
+          rowsVal = rows[size];
+        }
+      }
+
+      // Also if areas is a simple array not an object of arrays for
+      // different sizes
+      let areasVal = areas;
+      if (areas && !Array.isArray(areas)) areasVal = areas[size];
+
+      return (
+        <Grid
+          {...props}
+          areas={!areasVal ? undefined : areasVal}
+          rows={!rowsVal ? size : rowsVal}
+          columns={!columnsVal ? size : columnsVal}
+        >
+          {children}
+        </Grid>
+      );
+    }}
+  </ResponsiveContext.Consumer>
+);
 
 const AppBar = props => (
   <Box
@@ -254,60 +153,58 @@ const Layout = ({ children, location }) => (
       }
     `}
     render={data => (
-      <Grommet plain theme={theme}>
-      <AppBar>
-        <Box direction='row' align="center">
-            <Button plain onClick={()=>navigate('/')}>
+    <Grommet plain theme={theme}>
+      <Box>
+        <ResponsiveGrid
+          rows={rows}
+          columns={columns}
+          gap="small"
+          areas={fixedGridAreas}
+          margin={{ top: 'medium' }}
+        >
+          <Box
+            gridArea="title"
+            justify="center"
+            align="center"
+          >
+            <Link to={''} style={{ 'text-decoration': 'none'}}>
               <Box background='brand'>
                 <TitleHeading>{data.site.siteMetadata.title}</TitleHeading>
               </Box>
-            </Button>
-          <SubTitleHeading>musical improvisation</SubTitleHeading>
-        </Box>
-        <Box direction='row'>
-          <Link to={'/'}>
-            {location.pathname == "/" && <NavButton label='home' primary />}
-            {location.pathname != "/" && <NavButton label='home' />}
-          </Link>
-          <Link to={'/about'}>
-            {location.pathname == "/about" && <NavButton label='about' primary />}
-            {location.pathname != "/about" && <NavButton label='about' />}
-          </Link>
-        </Box>
-      </AppBar>
-      {children}
+            </Link>
+          </Box>
+          <Box
+            gridArea="subtitle"
+            justify="center"
+            align="center"
+          >
+            <SubTitleHeading>musical improvisation</SubTitleHeading>
+          </Box>
+          <Box
+            gridArea="nav"
+            justify="center"
+            align="center"
+            direction='row'
+          >
+            <Link to={'/'}>
+              <NavButton label='home' primary={location.pathname == "/"} />
+            </Link>
+            <Link to={'/about'}>
+              <NavButton label='about' primary={location.pathname == "/about"} />
+            </Link>
+          </Box>
+          <Box
+            gridArea="main"
+            justify="center"
+            align="center"
+          >
+            {children}
+          </Box>
+        </ResponsiveGrid>
+      </Box>
     </Grommet>
     )}
   />
 )
-
-// class Layout extends React.Component {
-//   render() {
-//     const { children, data } = this.props
-//     const { title }= data.site.siteMetadata
-//     return  (
-//       <StaticQuery 
-      
-//       />
-//       <Grommet plain theme={theme}>
-//         <AppBar>
-//           <Box direction='row' align="center">
-//             <Link to={'/'}>
-//               <Box background='brand'>
-//                 <TitleHeading>{title}</TitleHeading>
-//               </Box>
-//             </Link>
-//             <SubTitleHeading>musical improvisation</SubTitleHeading>
-//           </Box>
-//           <Box direction='row'>
-//             <Link to={'/'}><Button label='home' /></Link>
-//             <Link to={'/about'}><Button label='about' /></Link>
-//           </Box>
-//         </AppBar>
-//         {children}
-//       </Grommet>
-//     )
-//   }
-// }
 
 export default Layout

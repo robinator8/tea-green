@@ -1,9 +1,10 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { Heading, Text, Box, Button } from 'grommet'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -16,70 +17,36 @@ class BlogPostTemplate extends React.Component {
           title={"Daily music from " + post.frontmatter.date}
           description={"Tea Green daily improvisational music: " + post.frontmatter.date}
         />
-        <article>
-          <header>
-            <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
-            >
+        <Box justify="center" align="center">
+            <Heading>
               {post.frontmatter.date}
-            </h1>
-            <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(1),
-              }}
-            >
-            </p>
-          </header>
-          <audio controls= { true }>
+            </Heading>
+          <audio controls>
             <source src={ post.frontmatter.mp3.publicURL } type="audio/mpeg" />
             Your browser does not support this audio element.
           </audio>
           
-          {
+          {/* {
             post.frontmatter.mid != null &&
             <a href={ post.frontmatter.mid.publicURL }>mid</a>
-          }
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
-          <footer>
-
-          </footer>
-        </article>
+          } */}
+          
+          {/* <section dangerouslySetInnerHTML={{ __html: post.html }} /> */}
+        </Box>
 
         <nav>
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}
-          >
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.date}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.date} →
-                </Link>
-              )}
-            </li>
-          </ul>
+          {/* {previous && (
+            <Button label="Previous" onclick={() => navigate(previous.fields.slug)} />
+          )}
+          {next && (
+            <Button label="Next" onClick={() => navigate(next.fields.slug)} />
+          )} */}
+            {previous && (
+              <Button label="←" onClick={()=>{navigate(previous.fields.slug, {rel: 'prev'})}} margin={'large'} />
+            )}
+            {next && (
+              <Button label="→" onClick={()=>{navigate(next.fields.slug, {rel: 'next'})}} margin={'large'}/>
+            )}
         </nav>
       </Layout>
     )
