@@ -3,9 +3,9 @@
   "private": true,
   "description": "A musical improvisation blog",
   "version": "0.1.0",
-  "author": "Robert Craig <robertcraig38@gmail.com ",
+  "author": "Robert Craig <robertcraig38@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/robinator8/tea-green/issues"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
@@ -44,15 +44,20 @@
   "devDependencies": {
     "prettier": "^1.18.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://teagreen.ca",
   "keywords": [
-    "gatsby"
+    "music",
+    "song-writing",
+    "tea green",
+    "musical improvisation",
+    "improv",
+    "improvisation"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/robinator8/tea-green.git"
   },
   "scripts": {
     "build": "gatsby build",
