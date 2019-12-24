@@ -8,9 +8,9 @@
     "url": "https://github.com/robinator8/tea-green/issues"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.15.36",
     "gatsby-background-image": "^0.8.15",
+    "gatsby-cli": "^2.8.21",
     "gatsby-image": "^2.2.27",
     "gatsby-plugin-feed": "^2.3.16",
     "gatsby-plugin-google-analytics": "^2.1.21",
@@ -30,6 +30,7 @@
     "gatsby-transformer-remark": "^2.6.28",
     "gatsby-transformer-sharp": "^2.2.21",
     "grommet": "^2.7.9",
+    "moment": "^2.24.0",
     "prismjs": "^1.17.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -42,6 +43,7 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
     "prettier": "^1.18.2"
   },
   "homepage": "https://teagreen.ca",

@@ -3,6 +3,20 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import styled from 'styled-components'
+
+const WhiteHeader = styled.h2`
+  font-size: 8vw;
+  text-align: center;
+  padding: 5vw 0;
+  margin: 0;
+`
+
+const BlackHeader = styled(WhiteHeader)`
+  background-color: rgba(0,0,0,0.9);
+  color: white;
+  margin: 0;
+`
 
 class NotFoundPage extends React.Component {
   render() {
@@ -12,8 +26,9 @@ class NotFoundPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="404: Not Found" />
-        <h1>Not Found</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        <WhiteHeader>Hey there!</WhiteHeader>
+        <BlackHeader>This page doesn't exist.</BlackHeader>
+        <WhiteHeader>Error 404</WhiteHeader>
       </Layout>
     )
   }
