@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MonthDisplay from './monthdisplay'
+import MonthDisplay from './MonthDisplay'
 import styled from 'styled-components'
 
 const Header = styled.h2`
@@ -12,14 +12,18 @@ const Header = styled.h2`
     cursor: default;
 `
 
+const Container = styled.div`
+    padding-bottom: 11.45vmin;
+`
+
 class YearDisplay extends Component {
     render() {
         const { year, months } = this.props
         return (
-            <div>
+            <Container>
                 <Header>{year}</Header>
-                {months.map(({ month, weeks }) => <MonthDisplay month={month} weeks={weeks} />)}
-            </div>
+                {months.map(({ month, weeks }) => <MonthDisplay month={month} weeks={weeks} key={month} />)}
+            </Container>
         )
     }
 }

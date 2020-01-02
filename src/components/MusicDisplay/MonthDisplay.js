@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import WeekDisplay from './weekdisplay'
+import WeekDisplay from './WeekDisplay'
 import styled from 'styled-components'
 
 const Header = styled.h3`
@@ -18,7 +18,7 @@ class MonthDisplay extends Component {
         return (
             <div>
                 <Header>{month}</Header>
-                {weeks.map((songs => <WeekDisplay songs={songs} />))}
+                {weeks.map(((songs, index) => <WeekDisplay songs={songs} key={month+index} />))}
             </div>
         )
     }

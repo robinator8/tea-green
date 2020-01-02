@@ -1,12 +1,11 @@
 import React from "react"
-import { Link, graphql, navigate } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import SEO from "../components/Seo"
 
-import { Box, Meter, Text } from 'grommet'
-import MusicDisplay from '../components/musicdisplay'
+import MusicDisplay from '../components/MusicDisplay/MusicDisplay'
+import moment from "moment"
 
 class BlogIndex extends React.Component {
   render() {
@@ -33,9 +32,11 @@ class BlogIndex extends React.Component {
       const musicdata = this.props.data.allMarkdownRemark.edges.map(({ node }) => ({
         date: node.frontmatter.date, 
         artist: node.frontmatter.artist,
-        mp3: node.frontmatter.mp3.publicURL,
+        src: node.frontmatter.mp3.publicURL,
+        title: moment.utc(node.frontmatter.date).format("MMM D, YYYY")
       }))
-      
+    console.log("ABC!123")
+    console.log(musicdata)
     return (
       <Layout location={this.props.location}>
         <SEO title="All posts" />

@@ -1,5 +1,11 @@
 import moment from 'moment'
 
+export function formatTime(seconds) {
+    const m = moment.utc(seconds, "X")
+    if (!m.isValid()) return '0:00'
+    return m.format("m:ss")
+}
+
 // output = [
 //     {
 //         year: 2019,
@@ -14,10 +20,10 @@ import moment from 'moment'
 // ]
 
 export function yearSplit(songs) {
-    const years = [...new Set(songs.map(({ date }) => moment(date).format("YYYY")))]
+    const years = [...new Set(songs.map(({ date }) => moment.utc(date).format("YYYY")))]
     return years.map(year => ({
         year: year,
-        songs: songs.filter(({ date }) => moment(date).format("YYYY") === year)
+        songs: songs.filter(({ date }) => moment.utc(date).format("YYYY") === year)
     }))
 }
 
@@ -34,16 +40,16 @@ export function yearSplit(songs) {
 //     }
 // ]
 export function monthSplit(songs) {
-    const months = [...new Set(songs.map(({ date }) => moment(date).format("MMM")))]
+    const months = [...new Set(songs.map(({ date }) => moment.utc(date).format("MMM")))]
     return months.map(month => ({
         month: month,
-        songs: songs.filter(({ date }) => moment(date).format("MMM") === month)
+        songs: songs.filter(({ date }) => moment.utc(date).format("MMM") === month)
     }))
 }
 export function weekSplit(songs) {
-    const weeks = [...new Set(songs.map(({ date }) => moment(date).format("w")))]
+    const weeks = [...new Set(songs.map(({ date }) => moment.utc(date).format("w")))]
     return weeks.map(week => (
-        songs.filter(({ date }) => moment(date).format("w") === week)
+        songs.filter(({ date }) => moment.utc(date).format("w") === week)
     ))
 }
 // output = [
@@ -75,11 +81,11 @@ export function fullSplit(songs) {
         year: year,
         months: monthSplit(songs).map(({ month, songs }) => ({
             month: month,
-            weeks: weekSplit(songs).map(week => week.map(({ date, mp3, artist }) => ({
+            weeks: weekSplit(songs).map(week => week.map(({ date, src, artist }) => ({
                 date: date,
-                dayOfMonth: moment(date).format('DD'),
-                dayOfWeek: moment(date).format('ddd'),
-                mp3: mp3,
+                dayOfMonth: moment.utc(date).format('DD'),
+                dayOfWeek: moment.utc(date).format('ddd'),
+                src: src,
                 artist: artist
             })))
         }))

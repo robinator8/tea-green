@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { fullSplit } from '../utils/parsing'
-import YearDisplay from './yeardisplay'
+import { fullSplit } from '../../utils/parsing'
+import YearDisplay from './YearDisplay'
 import styled from 'styled-components'
+import Player from '../Player/Player'
 
 const Container = styled.div`
     width: 100%
@@ -10,7 +11,7 @@ const Container = styled.div`
 // songs: [
 //     {
 //         date: '2019-12-14T00:00:00.000Z'
-//         mp3: 'window.com/song.mp3
+//         src: 'window.com/song.mp3
 //     },
 //     ...
 // ]
@@ -20,7 +21,8 @@ class MusicDisplay extends Component {
         const data = fullSplit(songs)
         return (
             <Container>
-                {data.map(({ year, months }) => <YearDisplay year={year} months={months} />)}
+                {data.map(({ year, months }) => <YearDisplay year={year} months={months} key={year} />)}
+                <Player playlist={songs} />   
             </Container>
         )        
     }

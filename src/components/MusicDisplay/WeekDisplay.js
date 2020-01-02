@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DayDisplay from './daydisplay'
+import DayDisplay from './DayDisplay'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -14,7 +14,7 @@ class WeekDisplay extends Component {
         const { songs } = this.props
         return (
             <Container>
-                {songs.map((song => <DayDisplay song={song} />))}
+                {songs.map((song => <DayDisplay song={song} key={song.src} />))}
             </Container>
         )
     }

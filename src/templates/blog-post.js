@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql, navigate } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/Seo"
 import { rhythm, scale } from "../utils/typography"
 import { Heading, Text, Box, Button } from 'grommet'
 
