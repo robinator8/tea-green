@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import Player from '../Player/Player'
 
 const Container = styled.div`
-    width: 100%
+    width: 100%;
+    padding-bottom: 11.45vmin;
 `
 
 // songs: [

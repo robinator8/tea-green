@@ -12,18 +12,14 @@ const Header = styled.h2`
     cursor: default;
 `
 
-const Container = styled.div`
-    padding-bottom: 11.45vmin;
-`
-
 class YearDisplay extends Component {
     render() {
         const { year, months } = this.props
         return (
-            <Container>
+            <div>
                 <Header>{year}</Header>
                 {months.map(({ month, weeks }) => <MonthDisplay month={month} weeks={weeks} key={month} />)}
-            </Container>
+            </div>
         )
     }
 }
