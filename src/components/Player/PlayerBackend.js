@@ -223,7 +223,7 @@ class PlayerBackend extends Component {
                     src={this.state.currentSong.src}
                     playing={this.state.playing}
                     ref={(ref) => (this.player = ref)}
-                    html5={true}
+                    html5={false}
                     onEnd={() => this.skipForward()}
                     volume={this.state.volume}
                 />
