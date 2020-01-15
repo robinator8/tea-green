@@ -35,13 +35,18 @@ const IconContainer = styled.div`
         if (medium) return '8vmin'
         if (small) return '4.5vmin'
     }};
+    background-color: ${({ active }) => active ? '#b5e0ad' : 'none'};
+    border-radius: 100%;
     margin: auto;
     display: flex;
+    transition: 0.2s;
     &:hover {
         cursor: pointer;
+        background-color: ${({ active }) => active ? 'white' : 'none'};
     }
     &:active {
         cursor: pointer;
+        background-color: ${({ active }) => active ? '#b5e0ad' : 'none'};
     }
 `
 
@@ -53,23 +58,15 @@ const Icon = styled(Icons.Icon)`
     }};
 
     color: ${({ active }) => 
-        active ? '#b5e0ad' : 'white'
+        active ? 'rgba(0,0,0,0.9)' : 'white'
     };
     margin: auto;
     transition: 0.2s;
     ${IconContainer}:hover & {
-        font-size: ${({ large, medium, small }) => { 
-            if (large) return '6vmin'
-            if (medium) return '4.75vmin'
-            if (small) return '3vmin'
-        }};
+        color: ${({ active }) => active ? 'rgba(0,0,0,0.9)' : '#b5e0ad'};
     }
     ${IconContainer}:active & {
-    font-size: ${({ large, medium, small }) => { 
-            if (large) return '5vmin'
-            if (medium) return '4vmin'
-            if (small) return '2.5vmin'
-        }};
+        color: ${({ active }) => active ? 'rgba(0,0,0,0.9)' : 'white'};
     }
 `
 
@@ -168,7 +165,7 @@ class PlayerUI extends Component {
                         </TitleWrapper>
                     </TitleCont>
                     <MainControls>
-                        <IconContainer small onClick={() => data.funcs.toggleShuffle()}>
+                        <IconContainer small active={data.shuffle} onClick={() => data.funcs.toggleShuffle()}>
                             <Icon small active={data.shuffle}>{Icons.Shuffle}</Icon>
                         </IconContainer>
                         <IconContainer medium onClick={() => data.funcs.skipBackward()}>
@@ -180,7 +177,7 @@ class PlayerUI extends Component {
                         <IconContainer medium onClick={() => data.funcs.skipForward()}>
                             <Icon medium>{Icons.Forward}</Icon>
                         </IconContainer>
-                        <IconContainer small onClick={() => this.toggleQueue()}>
+                        <IconContainer small active={this.state.showQueue} onClick={() => this.toggleQueue()}>
                             <Icon small active={this.state.showQueue}>{Icons.Queue}</Icon>
                         </IconContainer>
                     </MainControls>

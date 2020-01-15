@@ -19,7 +19,7 @@ const Container = styled.div`
 const SongTitle = styled.p`
     font-size: 4vmin;
     color: black;
-    margin: auto;
+    margin: 3vmin auto;
     padding-left: 3vmin;
 `
 
