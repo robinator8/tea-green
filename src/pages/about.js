@@ -28,7 +28,7 @@ class AboutPage extends React.Component {
     return (  
     <Layout location={this.props.location}>
       <SEO title="About" />
-      <LightP><BigSpan>Hi, </BigSpan> I'm Rob Craig and this my musical improvisation blog, or implog if you will.</LightP>
+      <LightP><BigSpan>Hi, </BigSpan> I'm Rob Craig and this is my musical improvisation blog, or implog if you will.</LightP>
       <DarkP>Tea green is my first solo project.</DarkP>
       <LightP>Tea Green is dedicated to my #1 fan, Grandma. Thank you for everything.</LightP>
       <DarkP>More information about me can be found on my personal website, <Link href="https://robcraig.me">robcraig.me</Link></DarkP>
